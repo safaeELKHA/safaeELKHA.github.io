@@ -24,12 +24,8 @@ body {
   display: block;
   clear: both;
 }
-.container h2 {
-  margin-bottom: 2px;
-}
-.container p {
-  line-height: 1.4;
-}
+
+
 img {
   width: 1000px;
   height: 400px;
