@@ -54,7 +54,7 @@
     <div id="lead">
         <div id="lead-content">
             <h1>Safae <br/> EL KHALDI</h1></br>
-			<h2>Enseignante passionnée par les technologies</br> & candidate au poste d’animatrice de l’atelier d’informatique</h2>
+			<h2>Enseignante passionnée par les technologies</br> & candidate animatrice d’atelier d’informatique.</h2>
             <a href="#realisations"  class="btn-rounded-white" >Voir mes réalisations</a>
         </div>
         <!-- End #lead-content -->
@@ -83,9 +83,10 @@ Enseignante passionnée titulaire d’une Licence Professionnelle en Systèmes d
 </br> </br>À travers ces expériences, les élèves ont non seulement développé leurs compétences en programmation (Scratch, Mblock, Spike, Python), mais aussi acquis des compétences du 21e siècle telles que la créativité, la pensée critique, la résolution de problèmes, la communication et le travail collaboratif.
 
 </br></br>Aujourd’hui, je souhaite mettre mon expertise au service d’un Établissement d’Épanouissement pour l’Éducation et la Formation, afin de contribuer à la formation d’apprenants autonomes, innovants et prêts à relever les défis du futur numérique.
-		    </p>
+		    <a href="CV safa fr epa.pdf"  class="btn-rounded-white" target="_blank">Télécharger le CV</a>
+				 </p>
                   </p>
-					  <a href="CV safa fr epa.pdf"  class="btn-rounded-white" target="_blank">Télécharger le CV</a>
+					 
                    </div>
                    
             </div>
@@ -94,15 +95,119 @@ Enseignante passionnée titulaire d’une Licence Professionnelle en Systèmes d
   
     <!-- End #about -->
 	<div  id="realisations">
-            <div  class="wrapperIMG">
-				<h2 class="heading">Mes réalisations</h2>   
-				<img src="album/FB_IMG_1707211504339.jpg" alt="fll masterpiece">
-   				<img src="album/FB_IMG_1707211512789.jpg" alt="fll masterpiece">
-                  <p>  
-                  </p>
+				<section id="realisations" class="album-section">
+				<h2 class="heading">Mes réalisations</h2>  
+				 <!-- ALBUM --> 
+  <div class="album">
+    <button class="nav prev" aria-label="Image précédente">&#10094;</button>
+
+    <div class="viewport">
+      <ul class="slides">
+        <!-- Liste des images : ajoute ou enlève des <li> selon tes fichiers -->
+        <li class="slide"><img src="album/FB_IMG_1707211504339.jpg" alt="FLL - Atelier" loading="lazy"></li>
+        <li class="slide"><img src="album/FB_IMG_1707211512789.jpg" alt="FLL - Equipe" loading="lazy"></li>
+        <!-- <li class="slide"><img src="album/atelier3.jpg" alt="Atelier Scratch" loading="lazy"></li> -->
+      </ul>
+    </div>
+
+    <button class="nav next" aria-label="Image suivante">&#10095;</button>
+
+    <div class="dots" aria-hidden="false"></div>
+  </div>
+</section>
+
+<!-- CSS : mettre dans ton style.css -->
+<style>
+/* Album carousel basique, responsive */
+.album-section { max-width: 1000px; margin: 30px auto; padding: 0 16px; }
+.album { position: relative; display:flex; align-items:center; gap:12px; }
+.viewport { overflow: hidden; flex:1; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.12); }
+.slides { display: flex; margin:0; padding:0; list-style:none; transition: transform 400ms ease; will-change: transform; }
+.slide { min-width: 100%; box-sizing: border-box; display:flex; align-items:center; justify-content:center; background:#fff; }
+.slide img { width:100%; height: auto; display:block; object-fit:cover; border-radius:12px; }
+
+/* Nav buttons */
+.nav { background: rgba(0,0,0,0.55); color:#fff; border:none; padding:10px 14px; font-size:22px; border-radius:8px; cursor:pointer; transition: background 150ms; }
+.nav:hover { background: rgba(0,0,0,0.75); }
+.prev { margin-left: 4px; }
+.next { margin-right: 4px; }
+
+/* Dots / pagination */
+.dots { text-align:center; margin-top:10px; width:100%; display:flex; justify-content:center; gap:8px; }
+.dots button { width:10px; height:10px; border-radius:50%; border:none; background:#ddd; cursor:pointer; }
+.dots button.active { background:#333; }
+
+/* Responsiveness */
+@media (max-width:640px) {
+  .nav { padding:8px 10px; font-size:18px; }
+  .album-section { padding:0 8px; }
+}
+</style>
+
+<!-- JS : mettre avant </body> -->
+<script>
+(function(){
+  const slidesEl = document.querySelector('.slides');
+  const slides = document.querySelectorAll('.slide');
+  const prevBtn = document.querySelector('.nav.prev');
+  const nextBtn = document.querySelector('.nav.next');
+  const dotsContainer = document.querySelector('.dots');
+
+  if (!slidesEl || slides.length === 0) return;
+
+  let current = 0;
+  const total = slides.length;
+
+  // Crée les points (dots)
+  for (let i=0;i<total;i++){
+    const b = document.createElement('button');
+    b.dataset.index = i;
+    if (i === 0) b.classList.add('active');
+    dotsContainer.appendChild(b);
+  }
+  const dots = Array.from(dotsContainer.children);
+
+  function update() {
+    const offset = -current * 100;
+    slidesEl.style.transform = `translateX(${offset}%)`;
+    dots.forEach((d,i)=> d.classList.toggle('active', i === current));
+  }
+
+  function next() { current = (current + 1) % total; update(); }
+  function prev() { current = (current - 1 + total) % total; update(); }
+
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  // Navigation par points
+  dots.forEach(d => d.addEventListener('click', e => {
+    current = Number(e.currentTarget.dataset.index);
+    update();
+  }));
+
+  // Clavier
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+
+  // Touch / swipe support simple
+  let startX = 0, deltaX = 0;
+  const viewport = document.querySelector('.viewport');
+  viewport.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
+  viewport.addEventListener('touchmove', (e) => { deltaX = e.touches[0].clientX - startX; });
+  viewport.addEventListener('touchend', () => {
+    if (Math.abs(deltaX) > 40) {
+      if (deltaX < 0) next(); else prev();
+    }
+    startX = 0; deltaX = 0;
+  });
+})();
+</script>
+				<!-- End ALBUM -->
                 
                    
-            </div>
+         
          </div>
 
   
