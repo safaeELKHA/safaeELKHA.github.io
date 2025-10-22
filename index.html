@@ -94,64 +94,73 @@ Enseignante passionnée titulaire d’une Licence Professionnelle en Systèmes d
 
   
     <!-- End #about -->
-			<section id="realisations" class="album-section">
+		<section id="realisations" class="album-section">
   <h2 class="heading">Mes réalisations</h2>  
 
   <div class="album">
+    <!-- Flèches -->
     <button class="nav prev" aria-label="Image précédente">&#10094;</button>
+    <button class="nav next" aria-label="Image suivante">&#10095;</button>
 
+    <!-- Conteneur images -->
     <div class="viewport">
       <ul class="slides">
         <li class="slide"><img src="album/FB_IMG_1707211504339.jpg" alt="fll masterpiece"></li>
         <li class="slide"><img src="album/FB_IMG_1707211512789.jpg" alt="FLL - Equipe"></li>
+        <!-- Ajoute d'autres images ici -->
       </ul>
     </div>
 
-    <button class="nav next" aria-label="Image suivante">&#10095;</button>
+    <!-- Points / pagination -->
     <div class="dots"></div>
   </div>
 </section>
 
 <style>
 .album-section { max-width: 1000px; margin: 30px auto; padding: 0 16px; }
-.album { position: relative; display:flex; align-items:center; gap:12px; }
-.viewport { overflow: hidden; flex:1; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.12); }
+.viewport { overflow: hidden; width: 100%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); position: relative; }
 .slides { display: flex; margin:0; padding:0; list-style:none; transition: transform 400ms ease; will-change: transform; }
 .slide { min-width: 100%; display:flex; align-items:center; justify-content:center; background:#fff; }
 .slide img { width:100%; height:auto; display:block; object-fit:cover; border-radius:12px; }
 
-.nav { background: rgba(0,0,0,0.55); color:#fff; border:none; padding:10px 14px; font-size:22px; border-radius:8px; cursor:pointer; transition: background 150ms; }
+/* Flèches */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.55);
+  color:#fff;
+  border:none;
+  padding:10px 14px;
+  font-size:22px;
+  border-radius:8px;
+  cursor:pointer;
+  transition: background 150ms;
+  z-index: 10;
+}
+.prev { left: 10px; }
+.next { right: 10px; }
 .nav:hover { background: rgba(0,0,0,0.75); }
-.prev { margin-left: 4px; }
-.next { margin-right: 4px; }
 
+/* Points / dots */
 .dots {
   position: absolute;
-  bottom: 10px;             /* place les points sous l’image */
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
   gap: 8px;
-}
-
-.album {
-  position: relative;       /* nécessaire pour que .dots se place correctement */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;   /* pour que tout reste bien centré */
-  gap: 12px;
-}
-
-.viewport {
-  overflow: hidden;
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  z-index: 10;
 }
 .dots button { width:10px; height:10px; border-radius:50%; border:none; background:#ddd; cursor:pointer; }
 .dots button.active { background:#333; }
+
+/* Responsive */
+@media (max-width:640px) {
+  .nav { padding:8px 10px; font-size:18px; }
+  .album-section { padding:0 8px; }
+}
 </style>
 
 <script>
@@ -167,6 +176,7 @@ Enseignante passionnée titulaire d’une Licence Professionnelle en Systèmes d
   let current = 0;
   const total = slides.length;
 
+  // Crée les points (dots)
   for (let i=0;i<total;i++){
     const b = document.createElement('button');
     b.dataset.index = i;
@@ -191,6 +201,23 @@ Enseignante passionnée titulaire d’une Licence Professionnelle en Systèmes d
     update();
   }));
 
+  // Navigation au clavier
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+
+  // Swipe tactile simple
+  let startX = 0, deltaX = 0;
+  const viewport = document.querySelector('.viewport');
+  viewport.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
+  viewport.addEventListener('touchmove', (e) => { deltaX = e.touches[0].clientX - startX; });
+  viewport.addEventListener('touchend', () => {
+    if (Math.abs(deltaX) > 40) {
+      if (deltaX < 0) next(); else prev();
+    }
+    startX = 0; deltaX = 0;
+  });
 })();
 </script>
     <!-- End #about -->
