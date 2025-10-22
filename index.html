@@ -125,7 +125,31 @@ Enseignante passionnée titulaire d’une Licence Professionnelle en Systèmes d
 .prev { margin-left: 4px; }
 .next { margin-right: 4px; }
 
-.dots { text-align:center; margin-top:10px; display:flex; justify-content:center; gap:8px; }
+.dots {
+  position: absolute;
+  bottom: 10px;             /* place les points sous l’image */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.album {
+  position: relative;       /* nécessaire pour que .dots se place correctement */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;   /* pour que tout reste bien centré */
+  gap: 12px;
+}
+
+.viewport {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
 .dots button { width:10px; height:10px; border-radius:50%; border:none; background:#ddd; cursor:pointer; }
 .dots button.active { background:#333; }
 </style>
