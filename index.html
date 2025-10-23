@@ -73,28 +73,12 @@
     <!-- End #lead -->
 	
 <div id="about">
-	<style>
-	@media (max-width: 768px) {
-  .wrapperIMG {
-    display: flex;
-    flex-direction: column; /* empile image et texte verticalement */
-    align-items: center;    /* centre horizontalement */
-    text-align: center;     /* centre aussi le texte si besoin */
-  }
-
-  .imgProfil {
-    margin-bottom: 15px; /* espace entre l'image et le texte */
-  }
-}
-			</style>
   <div class="wrapperIMG">
     <div class="imgProfil">
       <img src="images/safae elkhaldi.jpg" />
     </div>
-
     <div class="text_boxIMG">
       <h2 class="heading">À Propos de Moi</h2>    
-
       <p>
  Titulaire d’une Licence en Systèmes d’Information et Génie Logiciel, je suis enseignante depuis 7 ans.
       </p>
@@ -115,25 +99,6 @@
     </div>
   </div>
 </div>
-			<style>
-.btn-rounded-theme {
-  display: inline-block;
-  text-align: center;
-  margin-top: 20px;
-  padding: 12px 28px;
-  background-color: #3498db;  
-  color: #fff;                
-  border: none;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 16px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-</style>
-
-  
     <!-- End #about -->
 		<section id="realisations" class="album-section">
   <h2 class="heading">Mes réalisations</h2>  
@@ -157,101 +122,6 @@
   </div>
 </section>
 
-<style>
-.album-section {
-  max-width: 1000px;
-  margin: 30px auto;
-  padding: 0 16px;
-  position: relative;
-}
-
-.album {
-  position: relative; /* référence pour flèches et points */
-  width: 100%;
-  margin: 0 auto;
-}
-
-.viewport {
-  width: 100%;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  position: relative;
-}
-
-.slides {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  transition: transform 400ms ease;
-}
-
-.slide {
-  min-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-}
-
-.slide img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-/* Flèches */
-.nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.55);
-  color: #fff;
-  border: none;
-  padding: 10px 14px;
-  font-size: 22px;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 10;
-}
-.prev { left: 10px; }
-.next { right: 10px; }
-.nav:hover { background: rgba(0,0,0,0.75); }
-
-/* Points / dots */
-.dots {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-  z-index: 10;
-}
-.dots button {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  background: #ddd;
-  cursor: pointer;
-}
-.dots button.active { background: #333; }
-
-/* Responsive */
-@media (max-width: 640px) {
-  .nav { padding: 8px 10px; font-size: 18px; }
-  .album-section { padding: 0 8px; }
-}
-</style>
-
-<script>
-
-</script>
-
     <!-- End #about -->
 
     <div id="experience" class="background-alt">
@@ -260,21 +130,14 @@
             <div data-date="Septembre 2019 - En cours">
                 <h3>Ministère de l'Éducation Nationale, Taounate, Maroc</h3>
                 <h4>Enseignante du Primaire</h4>
-		<ul>
-               			 <li>Conception et mise en œuvre de programmes éducatifs stimulants, intégrant les nouvelles technologies pour enrichir l'expérience d'apprentissage des élèves.</li>
-						 <li>Planification et exécution de leçons engageantes, favorisant un environnement d'apprentissage interactif et inclusif.</li>
-
-		</ul>
             </div>
 
             <div data-date="Septembre 2020 - En cours">
                 <h3>Ministère de l'Éducation Nationale, Taounate, Maroc</h3>
                 <h4>Coordinatrice du Club Numérique</h4>
 		 <ul>
-		        <li>Organisation de concours internes pour sélectionner les élèves intéressés par la programmation et la robotique.</li>
-               	<li>Mise en place et animation d’ateliers en Scratch, Mblock et Spike Prime.</li>
+               	<li>Mise en place et animation d’ateliers en Scratch, Minecraft, Mblock et Spike Prime.</li>
                	<li>Encadrement et coaching des élèves dans des compétitions de programmation et robotique (Inwi Challenge Minecraft, Super Codeurs, First Lego League Challenge), avec obtention de plusieurs prix nationaux et internationaux.</li>
-				<li>Développement de projets innovants permettant aux élèves d’acquérir des compétences numériques et robotiques solides. </li>
 		 </ul>
             </div>
 
@@ -282,8 +145,7 @@
                 <h3>Direction Régionale de Taounate, Taounate, Maroc</h3>
                 <h4>Formatrice en Éducation</h4>
          <ul>
-			<li>Animation de sessions de formation pour les éducateurs, axées sur l'intégration des compétences du 21e siècle, telles que la résolution de problèmes réels et la collaboration.</li>
-            <li>Utilisation proactive des outils Microsoft pour accroître l'efficacité des enseignants.</li>
+			<li>Animation de sessions de formation pour les enseignants.</li>  
 		 </ul>
             </div>
         </div>
@@ -296,13 +158,6 @@
             <h3>Faculté des Sciences Dhar El Mahraz(FSDM), Fès, Maroc</h3>
             <span class="education-date">Septembre 2016 - Juillet 2017</span>
             <h4>Licence Professionnelle en Systèmes d'Information et Génie Logiciel</h4>
-            <p>
-        	La licence en Systèmes d'Information et Génie Logiciel représente une étape cruciale dans mon parcours éducatif.
-		Ce bagage préparatoire m'a non seulement positionné pour exceller dans le domaine professionnel, 
-		mais il constitue également une ressource essentielle dans mon rôle d'enseignante. 
-		Cette formation me permet d'apporter des perspectives pratiques et des compétences concrètes à mes élèves,
-		en intégrant les dernières avancées technologiques dans mon enseignement, contribuant ainsi à leur préparation pour les défis de demain.
-            </p>
         </div>
         <!-- End .education-block -->
 
@@ -311,11 +166,6 @@
             <span class="education-date">Septembre 2014 - Juillet 2016</span>
             <h4>Diplôme Universitaire Technique en Génie Informatique</h4>
 	   <p>
-		Le Diplôme Universitaire Technique en Génie Informatique m'a non seulement doté de compétences approfondies pour la conception, 
-		la réalisation et la mise en service de systèmes informatiques,
-		mais il m'a également préparé de manière approfondie au développement de logiciels.
-		Cette combinaison de connaissances théoriques et pratiques a renforcé ma base académique tout 
-		en me fournissant des outils concrets pour réussir dans le domaine de l'informatique.
           </p>
         </div>
         <!-- End .education-block -->
@@ -333,7 +183,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h2 class="heading">Compétences</h2>
+                    <h2 class="heading">Mon projet</h2>
                 </div>
                 <div style="text-align:left;" class="col-md-8">
 	<ul>
@@ -369,13 +219,7 @@
 		essentielles chez les apprenants.
 		
 	    </p>
-		 <p><h3>Langues</h3>
 		
-		Arabe : Langue maternelle.
-		</br>Français : Niveau avancé.
-		</br>Anglais : Niveau avancé.
-		
-	    </p>
                   <p><h3>Logiciels</h3>
 	
 		Maîtrise des outils tels que Excel, Word, PowerPoint, Filmora, Camtasia, Eclipse,
