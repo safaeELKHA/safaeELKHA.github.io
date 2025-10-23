@@ -1,1 +1,132 @@
+@media (max-width: 768px) {
+  .wrapperIMG {
+    display: flex;
+    flex-direction: column; /* empile image et texte verticalement */
+    align-items: center;    /* centre horizontalement */
+    text-align: center;     /* centre aussi le texte si besoin */
+  }
+
+  .imgProfil {
+    margin-bottom: 15px; /* espace entre l'image et le texte */
+  }
+}
+.btn-rounded-theme {
+  display: inline-block;
+  text-align: center;
+  margin-top: 20px;
+  padding: 12px 28px;
+  background-color: #3498db;  
+  color: #fff;                
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.album-section {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 16px;
+  position: relative;
+}
+
+.album {
+  position: relative; /* référence pour flèches et points */
+  width: 100%;
+  margin: 0 auto;
+}
+
+.viewport {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 400ms ease;
+}
+
+.slide {
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Flèches */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  font-size: 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 10;
+}
+.prev { left: 10px; }
+.next { right: 10px; }
+.nav:hover { background: rgba(0,0,0,0.75); }
+
+/* Points / dots */
+.dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #ddd;
+  cursor: pointer;
+}
+.dots button.active { background: #333; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .nav { padding: 8px 10px; font-size: 18px; }
+  .album-section { padding: 0 8px; }
+}
+/* Légende (titre au-dessus de chaque image) */
+.caption {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Ajustement de la slide */
+.slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 
