@@ -251,3 +251,66 @@ section {
   height: auto;
   border-radius: 10px;
 }
+.section-presse {
+  background: #f8f8f8;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.press-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.press-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.press-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.press-content {
+  padding: 20px;
+}
+
+.press-content h3 {
+  color: #222;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.press-content p {
+  color: #666;
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.btn-press {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #0078d7;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: background-color 0.3s;
+}
+
+.btn-press:hover {
+  background-color: #005fa3;
+}
