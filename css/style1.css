@@ -179,6 +179,9 @@ section {
     padding-top: 50px;
     padding-bottom: 50px;
   }
+  .img-petite {
+    max-width: 150px;
+  }
   
   .row {
     flex-direction: column;
@@ -241,4 +244,10 @@ section {
 }
 .btn-small:hover {
   background-color: #0056b3;
+}
+.img-petite {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
 }
