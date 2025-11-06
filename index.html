@@ -273,7 +273,9 @@
     <h2 class="heading">Certifications</h2>
 
     <div class="slider">
-      <button class="prev">&#10094;</button>
+      <!-- Bouton précédent -->
+      <button class="prev" aria-label="Précédent">&#10094;</button>
+
       <div class="cert-list">
         <!-- Certif 1 -->
         <div class="cert-item">
@@ -284,16 +286,25 @@
           </div>
         </div>
 
-        <!-- Certif 2 -->
+        <!-- Certif 2 
         <div class="cert-item">
           <img src="images/2Certificat EUN AI_Education .png" alt="EUN AI logo" class="img-petite">
           <div class="cert-info">
             <h3>Certificat en Libération du Pouvoir de l'IA dans l'Éducation</h3>
             <p>Avril 2023</p>
           </div>
-        </div>
+        </div>-->
 
         <!-- Certif 3 -->
+        <div class="cert-item">
+          <img src="images/3Microsoft_Innovative_Educator_Expert.png" alt="Microsoft logo" class="img-petite">
+          <div class="cert-info">
+            <h3>Microsoft Innovative Educator Expert MIEE</h3>
+            <p>Septembre 2021</p>
+          </div>
+        </div>
+
+        <!-- Certif 4 -->
         <div class="cert-item">
           <img src="images/3Microsoft_Innovative_Educator_Expert.png" alt="Microsoft logo" class="img-petite">
           <div class="cert-info">
@@ -347,6 +358,15 @@
           </div>
         </div>
 
+        <!-- Certif 10 -->
+        <div class="cert-item">
+          <img src="images/9access.PNG" alt="Access logo" class="img-petite">
+          <div class="cert-info">
+            <h3>Microsoft Office Specialist Access</h3>
+            <p>Juillet 2021</p>
+          </div>
+        </div>
+
         <!-- Certif 11 -->
         <div class="cert-item">
           <img src="images/excel mos.png" alt="Excel MOS logo" class="img-petite">
@@ -365,10 +385,13 @@
           </div>
         </div>
       </div>
-      <button class="next">&#10095;</button>
+
+      <!-- Bouton suivant -->
+      <button class="next" aria-label="Suivant">&#10095;</button>
     </div>
   </div>
 </section>
+
 <style>
 /* ----- Section générale ----- */
 .section-certif {
@@ -389,11 +412,14 @@
   overflow: hidden;
   max-width: 100%;
   margin: 0 auto;
+  padding: 10px 40px; /* espace pour boutons */
+  box-sizing: border-box;
 }
 
 .cert-list {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.45s ease-in-out;
+  will-change: transform;
 }
 
 .cert-item {
@@ -406,6 +432,7 @@
   flex-shrink: 0;
   text-align: center;
   padding: 10px;
+  box-sizing: border-box;
 }
 
 .cert-item img.img-petite {
@@ -433,27 +460,27 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.45);
   color: white;
   border: none;
-  font-size: 24px;
+  font-size: 22px;
   cursor: pointer;
-  padding: 10px 15px;
+  padding: 8px 12px;
   border-radius: 50%;
-  transition: background 0.3s;
+  transition: background 0.2s;
   z-index: 10;
 }
 
 .prev:hover, .next:hover {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.7);
 }
 
 .prev {
-  left: 10px;
+  left: 8px;
 }
 
 .next {
-  right: 10px;
+  right: 8px;
 }
 
 /* ----- Responsive ----- */
@@ -468,29 +495,80 @@
   .heading {
     font-size: 20px;
   }
+  .slider {
+    padding: 10px 30px;
+  }
 }
 </style>
 
 <script>
-const certList = document.querySelector('.cert-list');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.querySelector('.slider');
+  if (!slider) return;
 
-let scrollPosition = 0;
-const itemWidth = 270; // largeur d’un élément + marges
+  const certList = slider.querySelector('.cert-list');
+  const prevBtn = slider.querySelector('.prev');
+  const nextBtn = slider.querySelector('.next');
 
-nextBtn.addEventListener('click', () => {
-  if (scrollPosition > -(certList.scrollWidth - itemWidth * 2)) {
-    scrollPosition -= itemWidth;
-    certList.style.transform = `translateX(${scrollPosition}px)`;
+  if (!certList) return;
+
+  let position = 0;
+
+  function getItemWidth() {
+    const first = certList.querySelector('.cert-item');
+    if (!first) return 250; // fallback
+    const rect = first.getBoundingClientRect();
+    const style = getComputedStyle(first);
+    const marginLeft = parseFloat(style.marginLeft) || 0;
+    const marginRight = parseFloat(style.marginRight) || 0;
+    return rect.width + marginLeft + marginRight;
   }
-});
 
-prevBtn.addEventListener('click', () => {
-  if (scrollPosition < 0) {
-    scrollPosition += itemWidth;
-    certList.style.transform = `translateX(${scrollPosition}px)`;
+  function maxScroll() {
+    // valeur négative maximale qu'on peut atteindre
+    return Math.min(0, slider.clientWidth - certList.scrollWidth);
   }
+
+  function clampPosition(pos) {
+    const max = 0;
+    const min = maxScroll();
+    return Math.max(min, Math.min(max, pos));
+  }
+
+  function updateTransform() {
+    certList.style.transform = `translateX(${position}px)`;
+  }
+
+  // click next
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const w = getItemWidth();
+      position = clampPosition(position - w);
+      updateTransform();
+    });
+  }
+
+  // click prev
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      const w = getItemWidth();
+      position = clampPosition(position + w);
+      updateTransform();
+    });
+  }
+
+  // Recalcule à la redimension
+  window.addEventListener('resize', () => {
+    position = clampPosition(position);
+    updateTransform();
+  });
+
+  // (Optionnel) : empêcher sélection de texte lors de drag des boutons
+  [prevBtn, nextBtn].forEach(b => {
+    if (b) {
+      b.addEventListener('dragstart', e => e.preventDefault());
+    }
+  });
 });
 </script>
 
