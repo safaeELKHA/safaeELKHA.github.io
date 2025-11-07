@@ -396,3 +396,36 @@ section {
     padding: 8px 16px;
   }
 }
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.contact-info-icon img.icon-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.contact-info-content h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.contact-info-content p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
