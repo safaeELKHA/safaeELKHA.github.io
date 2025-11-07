@@ -429,3 +429,7 @@ section {
     font-size: 14px;
     color: #555;
 }
+.icon-small {
+    width: 24px;  /* adjust width */
+    height: 24px; /* adjust height */
+}
